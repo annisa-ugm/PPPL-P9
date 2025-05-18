@@ -88,6 +88,28 @@ public class GoogleTest {
         klikCart.click();
 
     }
+
+    @Test
+    public void testGoogle() {
+        WebDriver driver = new ChromeDriver();
+        driver.get("https://bing.com/");
+        searchPage lamanPencarian = new searchPage(driver);
+        lamanPencarian.setSearchBar("revandra");
+        lamanPencarian.formSubmit();
+        resultPage result = new resultPage(driver);
+        //assert
+        Assertions.assertTrue(result.getTitle().contains("revandra"));
+//        result.getTitle();
+    }
+
+    @Test
+    public void testGoogleNoValue() {
+        WebDriver driver = new ChromeDriver();
+        driver.get("https://bing.com/");
+        searchPage lamanPencarian = new searchPage(driver);
+        lamanPencarian.setSearchBar("");
+        lamanPencarian.formSubmit();
+    }
 }
 
 
